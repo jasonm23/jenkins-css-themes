@@ -18,3 +18,9 @@ a, a:visited, a:active, a:hover, a:link {
 #search-box {
    margin-top: 8px;
 }
+
+#main-table {
+   background: none;
+   background-image: none;
+   background-position: bottom left;
+}
