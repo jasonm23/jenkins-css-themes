@@ -5,9 +5,6 @@ body, p, table, tr, td, strong, h1, h2, h3, h4, h5, h6, blockquote, li {
 #top-panel {
    background-image: none;
    background: black;
-   content: "Jenkins";
-   color: white;
-   font-size: 15pt;
 }
 
 #top-panel img:first-child {
