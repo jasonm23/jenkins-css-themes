@@ -1,0 +1,45 @@
+body, p, table, tr, td, strong, h1, h2, h3, h4, h5, h6, blockquote, li {
+   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+a, a:visited, a:active, a:hover, a:link {
+   text-decoration: none;
+}
+
+#top-panel {
+   background-image: none;
+   background: black;
+}
+
+#top-panel img:first-child {
+   display:none;
+}
+
+#search-box {
+   margin-top: 8px;
+}
+
+#main-table {
+   background: none;
+   background-image: none;
+   background-position: bottom left;
+}
+
+#out pre {
+    background-color: #110F13;
+    color: white;
+    padding: 30px;
+    border-radius: 10px;
+    font-size: 10.5pt;
+}
+
+textarea .setting-input {
+    background-color: #110F13;
+    color: white;
+    padding: 10px;
+    font-size: 10.5pt;
+}
+
+.fixed-width {
+    font-family: Menlo, Monaco, Consolas, Inconsolata, Courier, monospace;
+}
