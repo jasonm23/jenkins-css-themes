@@ -25,6 +25,7 @@ a, a:visited, a:active, a:hover, a:link {
    background-position: bottom left;
 }
 
+#main-panel > pre,
 #out pre {
     background-color: #110F13;
     color: white;
