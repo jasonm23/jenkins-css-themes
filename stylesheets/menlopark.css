@@ -28,7 +28,7 @@ a, a:visited, a:active, a:hover, a:link {
 #main-panel > pre,
 #out pre {
     background-color: #110F13;
-    color: white;
+    color: #DFDFDF;
     padding: 30px;
     border-radius: 10px;
     font-size: 10.5pt;
@@ -36,7 +36,7 @@ a, a:visited, a:active, a:hover, a:link {
 
 textarea .setting-input {
     background-color: #110F13;
-    color: white;
+    color: #DFDFDF;
     padding: 10px;
     font-size: 10.5pt;
 }
