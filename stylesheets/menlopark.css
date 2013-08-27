@@ -37,9 +37,25 @@ a, a:visited, a:active, a:hover, a:link {
 textarea, .setting-input {
     background-color: #122F43;
     color: #DFDFDF;
-    padding: 10px;
+    padding: 6px 10px;
     font-size: 10.5pt;
     box-shadow: rgba(0,0,0,0.5) 1px 3px 6px inset;
+    border-radius: 8px;
+    border-style: none;
+}
+
+.yui-skin-sam .yui-button button {
+    line-height: 2em;
+    font-size: 10pt;
+    min-height: 2em;
+    padding: 0 10px;
+}
+
+select {
+    background-color: #122F43;
+    color: #DFDFDF;
+    border-radius: 8px;
+    height: 2.3em;
 }
 
 .fixed-width {
