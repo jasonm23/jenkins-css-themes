@@ -2,10 +2,6 @@ document.observe('dom:loaded', function() {
   setTimeout(function(){
     document.getElementById('search-box').setAttribute("type","search");
     document.getElementById('main-table').setAttribute("style","none");
-    CodeMirror.defaults = {
-      theme: 'menlo'
-    }
-
   }, 500);
   // Emacs codemirror keymap
   var emacs = document.createElement('script');
