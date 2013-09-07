@@ -63,6 +63,8 @@ select {
     height: 2.3em;
 }
 /* Code Mirror */
+
+.CodeMirror {background-color: #110F13;}
 .cm-s-default span.CodeMirror-matchhighlight { background: #494949 }
 .cm-s-default.CodeMirror-focused span.CodeMirror-matchhighlight { background: #314D67 !important; }
 .cm-s-default .CodeMirror-activeline-background {background: #253540 !important;}
@@ -81,7 +83,7 @@ select {
 .cm-s-default span.cm-variable {color: #eca851; }
 .cm-s-default span.cm-variable-2 {color: #eca851; }
 .cm-s-default span.cm-def {color: #5ac7c7; }
-.cm-s-default span.cm-error {background: #e33c78; color: #F8F8F0; }
+.cm-s-default span.cm-error {background: #d33c38; color: #F8F8F0; }
 .cm-s-default span.cm-bracket {color: #d1edff; }
 .cm-s-default span.cm-tag {color: #5a5a83; }
 .cm-s-default span.cm-link {color: #b28ef2; }
