@@ -1,4 +1,4 @@
 // Jenkins js tweaks
-setTimeout(function(){  
+setTimeout(function(){
   document.getElementById('search-box').setAttribute("type","search");
-}, 100);
+}, 350);
