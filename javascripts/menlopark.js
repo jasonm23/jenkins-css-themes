@@ -9,16 +9,18 @@ var emacs = document.createElement('script');
 emacs.src = "http://codemirror.net/keymap/emacs.js";
 document.getElementsByTagName('head')[0].appendChild(emacs);
 
+setTimeout(function(){
+  document.getElementById('search-box').setAttribute("type","search");
+  document.getElementById('main-table').setAttribute("style","none");
+}, 350);
+
 $(document).ready(function(){
-
-  document.querySelector('#search-box').setAttribute("type","search");
-
-  document.querySelector('#main-table').setAttribute("style","none");
 
   CodeMirror.defaults = {
     theme: 'menlo',
     smartIndent: true,
     indentWithTabs: false,
+    keymap: 'emacs',
     lineNumbers: true,
     undoDepth: 100
   }
