@@ -1,0 +1,64 @@
+body, p, table, tr, th, td, strong, h1, h2, h3, h4, h5, h6, blockquote, li {
+   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+   font-size: 10pt;
+}
+
+.fixed-width {
+    font-family: Menlo, Monaco, Consolas, Inconsolata, Courier, monospace;
+}
+
+a, a:visited, a:active, a:hover, a:link {
+   text-decoration: none;
+}
+
+#top-panel {
+   background-image: none;
+   background: black;
+}
+
+#top-panel img:first-child {
+   display:none;
+}
+
+#search-box {
+   margin-top: 8px;
+}
+
+#main-table {
+   background: none;
+   background-image: none;
+   background-position: bottom left;
+}
+
+#main-panel > pre,
+#out pre, pre {
+    background-color: #110F13;
+    color: #DFDFDF;
+    padding: 30px;
+    border-radius: 10px;
+    font-size: 10.5pt;
+}
+
+textarea, .setting-input {
+    background-color: #110F13;
+    color: #DFDFDF;
+    padding: 6px 10px;
+    font-size: 10.5pt;
+    box-shadow: rgba(0,0,0,0.5) 1px 3px 6px inset;
+    border-radius: 8px;
+    border-style: none;
+}
+
+.yui-skin-sam .yui-button button {
+    line-height: 2em;
+    font-size: 10pt;
+    min-height: 2em;
+    padding: 0 10px;
+}
+
+select {
+    background-color: #122F43;
+    color: #DFDFDF;
+    border-radius: 8px;
+    height: 2.3em;
+}
