@@ -45,7 +45,7 @@ window.addUpdatedCodeMirror = function(){
   document.head.appendChild(cm_theme);
   document.head.appendChild(cm_js);
   document.head.appendChild(emacs);
-  document.head.appendChild(fullScreen);
+  // document.head.appendChild(fullScreen);
 
 }
 
@@ -53,78 +53,80 @@ document.observe('dom:loaded', function() {
   setTimeout(function(){
     document.getElementById('search-box').setAttribute("type","search");
     document.getElementById('main-table').setAttribute("style","none");
-    purgeStaplerCodeMirror();
+  }, 500);
 
-    addUpdatedCodeMirror();
+  purgeStaplerCodeMirror();
 
-    Behaviour.specify("TEXTAREA.codemirror", 'textarea', 0, function(e) {
-      var h = e.clientHeight;
-      var config = e.getAttribute("codemirror-config") || "";
-      config = eval('({'+config+'})');
+  addUpdatedCodeMirror();
 
-      config.theme = "ambiance";
-      config.keyMap = "emacs";
+  Behaviour.specify("TEXTAREA.codemirror", 'textarea', 0, function(e) {
+    var h = e.clientHeight;
+    var config = e.getAttribute("codemirror-config") || "";
+    config = eval('({'+config+'})');
 
-      console.log(config);
+    config.theme = "ambiance";
+    config.keyMap = "emacs";
 
-      var codemirror = CodeMirror.fromTextArea(e,config);
-      e.codemirrorObject = codemirror;
-      if(typeof(codemirror.getScrollerElement) !== "function") {
-        // Maybe older versions of CodeMirror do not provide getScrollerElement method.
-        codemirror.getScrollerElement = function(){
-          return findElementsBySelector(codemirror.getWrapperElement(), ".CodeMirror-scroll")[0];
-        };
-      }
-      var scroller = codemirror.getScrollerElement();
-      scroller.setAttribute("style","border:1px solid black;");
-      scroller.style.height = h+"px";
+    console.log(config);
 
-      // the form needs to be populated before the "Apply" button
-      if(e.up('form')) { // Protect against undefined element
-        Element.on(e.up('form'),"jenkins:apply", function() {
-          e.value = codemirror.getValue()
-        })
-      }
-    });
+    var codemirror = CodeMirror.fromTextArea(e,config);
+    e.codemirrorObject = codemirror;
+    if(typeof(codemirror.getScrollerElement) !== "function") {
+      // Maybe older versions of CodeMirror do not provide getScrollerElement method.
+      codemirror.getScrollerElement = function(){
+        return findElementsBySelector(codemirror.getWrapperElement(), ".CodeMirror-scroll")[0];
+      };
+    }
+    var scroller = codemirror.getScrollerElement();
+    scroller.setAttribute("style","border:1px solid black;");
+    scroller.style.height = h+"px";
 
-    Behaviour.specify("DIV.textarea-preview-container", 'textarea', 100, function (e) {
-      var previewDiv = findElementsBySelector(e,".textarea-preview")[0];
-      var showPreview = findElementsBySelector(e,".textarea-show-preview")[0];
-      var hidePreview = findElementsBySelector(e,".textarea-hide-preview")[0];
+    // the form needs to be populated before the "Apply" button
+    if(e.up('form')) { // Protect against undefined element
+      Element.on(e.up('form'),"jenkins:apply", function() {
+        e.value = codemirror.getValue()
+      })
+    }
+  });
+
+  Behaviour.specify("DIV.textarea-preview-container", 'textarea', 100, function (e) {
+    var previewDiv = findElementsBySelector(e,".textarea-preview")[0];
+    var showPreview = findElementsBySelector(e,".textarea-show-preview")[0];
+    var hidePreview = findElementsBySelector(e,".textarea-hide-preview")[0];
+    $(hidePreview).hide();
+    $(previewDiv).hide();
+
+    showPreview.onclick = function() {
+      // Several TEXTAREAs may exist if CodeMirror is enabled. The first one has reference to the CodeMirror object.
+      var textarea = e.parentNode.getElementsByTagName("TEXTAREA")[0];
+      var text = textarea.codemirrorObject ? textarea.codemirrorObject.getValue() : textarea.value;
+      var render = function(txt) {
+        $(hidePreview).show();
+        $(previewDiv).show();
+        previewDiv.innerHTML = txt;
+        layoutUpdateCallback.call();
+      };
+
+      new Ajax.Request(rootURL + showPreview.getAttribute("previewEndpoint"), {
+        parameters: {
+          text: text
+        },
+        onSuccess: function(obj) {
+          render(obj.responseText)
+        },
+        onFailure: function(obj) {
+          render(obj.status + " " + obj.statusText + "<HR/>" + obj.responseText)
+        }
+      });
+      return false;
+    }
+
+    hidePreview.onclick = function() {
       $(hidePreview).hide();
       $(previewDiv).hide();
-
-      showPreview.onclick = function() {
-        // Several TEXTAREAs may exist if CodeMirror is enabled. The first one has reference to the CodeMirror object.
-        var textarea = e.parentNode.getElementsByTagName("TEXTAREA")[0];
-        var text = textarea.codemirrorObject ? textarea.codemirrorObject.getValue() : textarea.value;
-        var render = function(txt) {
-          $(hidePreview).show();
-          $(previewDiv).show();
-          previewDiv.innerHTML = txt;
-          layoutUpdateCallback.call();
-        };
-
-        new Ajax.Request(rootURL + showPreview.getAttribute("previewEndpoint"), {
-          parameters: {
-            text: text
-          },
-          onSuccess: function(obj) {
-            render(obj.responseText)
-          },
-          onFailure: function(obj) {
-            render(obj.status + " " + obj.statusText + "<HR/>" + obj.responseText)
-          }
-        });
-        return false;
-      }
-
-      hidePreview.onclick = function() {
-        $(hidePreview).hide();
-        $(previewDiv).hide();
-      };
-    });
+    };
+  });
 
 
-  }, 500);
+
 });
