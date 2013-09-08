@@ -64,7 +64,9 @@ select {
 }
 /* Code Mirror */
 
+/*
 .CodeMirror {background-color: #110F13;}
+*/
 .cm-s-menlo span.CodeMirror-matchhighlight { background: #494949 }
 .cm-s-menlo.CodeMirror-focused span.CodeMirror-matchhighlight { background: #314D67 !important; }
 .cm-s-menlo .CodeMirror-activeline-background {background: #253540 !important;}
