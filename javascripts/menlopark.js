@@ -1,6 +1,6 @@
 // Check/Purge existing codemirror.js, codemirror.css & codemirror/theme/default.css
 window.purgeStaplerCodeMirror = function(){
-  var cm_js_old = document.querySelector('src*="stapler/codemirror/lib/codemirror.js"');
+  var cm_js_old = document.querySelector('script[src*="stapler/codemirror/lib/codemirror.js"]');
   var cm_css_old = document.querySelector('link[href*="stapler/codemirror/lib/codemirror.css"]');
   var cm_default_theme_css_old = document.querySelector('link[href*="stapler/codemirror/theme/default.css"]');
   cm_parent = cm_js_old.parentNode;
