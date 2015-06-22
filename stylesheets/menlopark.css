@@ -3,7 +3,7 @@ body, p, table, tr, th, td, strong, h1, h2, h3, h4, h5, h6, blockquote, li {
    font-size: 10pt;
 }
 
-.fixed-width {
+.fixed-width, code, pre {
     font-family: Menlo, Monaco, Consolas, Inconsolata, Courier, monospace;
 }
 
@@ -108,7 +108,7 @@ select {
 
 .cm-s-menlo.CodeMirror {
   line-height: 1.40em;
-  font-family: Monaco, Menlo,"Andale Mono","lucida console","Courier New",monospace !important;
+  font-family: Menlo, Monaco, Consolas, Inconsolata, Courier, monospace !important;
   color: #E6E1DC;
   background-color: #202020;
   -webkit-box-shadow: inset 0 0 10px black;
