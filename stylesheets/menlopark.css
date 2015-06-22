@@ -39,6 +39,8 @@ a, a:visited, a:active, a:hover, a:link {
     font-size: 10.5pt;
 }
 
+#out > pre { padding: 0px }
+
 textarea, .setting-input {
     background-color: #110F13;
     color: #DFDFDF;
